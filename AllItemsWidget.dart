@@ -3,20 +3,32 @@ import 'package:flutter/material.dart';
 
 class AllItemsWidget extends StatelessWidget {
   final List<Map<String, String>> items = [
-    {'name': 'Rolex Datejust bleu', 'subTitle': ' Watch For Men', 'price': '50', 'image': '1.png'},
+    {'name': 'Rolex Datejust bleu', 'subTitle': 'Watch For Men', 'price': '50', 'image': '1.png'},
     {'name': 'Rolex  Wimbledon', 'subTitle': 'Watch For Women', 'price': '75', 'image': '2.png'},
-    {'name': 'Rolex Datejust green', 'subTitle': ' Watch For Men', 'price': '60', 'image': '3.png'},
+    {'name': 'Rolex Datejust green', 'subTitle': 'Watch For Men', 'price': '60', 'image': '3.png'},
     {'name': 'Rolex Oyster Perpetual', 'subTitle': 'Watch For Women', 'price': '80', 'image': '4.png'},
   ];
 
+  final String selectedCategory;
+
+  AllItemsWidget({required this.selectedCategory});
+
   @override
   Widget build(BuildContext context) {
+    List<Map<String, String>> filteredItems = items.where((item) {
+      if (selectedCategory == 'Men') {
+        return item['subTitle']!.contains('Men');
+      } else {
+        return item['subTitle']!.contains('Women');
+      }
+    }).toList();
+
     return GridView.count(
       crossAxisCount: 2,
       childAspectRatio: 0.68,
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      children: items.map((item) {
+      children: filteredItems.map((item) {
         return Container(
           padding: EdgeInsets.only(left: 15, right: 15, top: 10),
           margin: EdgeInsets.all(8),
