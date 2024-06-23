@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:projet1flutter/pages/PaymentSuccessPage';
 import 'package:provider/provider.dart';
 import 'package:projet1flutter/models/cart_provider.dart';
 
@@ -248,7 +249,10 @@ class BottomCartSheet extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      cartProvider.checkout();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PaymentSuccessPage()),
+                      );
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -270,7 +274,6 @@ class BottomCartSheet extends StatelessWidget {
               ),
             ),
           ],
-        
         ),
       ),
     );
