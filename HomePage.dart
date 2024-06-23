@@ -4,7 +4,6 @@ import 'package:projet1flutter/pages/menu.dart';
 import 'package:projet1flutter/widgets/AllItemsWidget.dart';
 import 'package:projet1flutter/widgets/HomeBottomNavBar.dart';
 import 'package:projet1flutter/widgets/RowItemsWideget.dart';
-// Import the CustomDrawer
 
 class HomePage extends StatefulWidget {
   @override
@@ -138,7 +137,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 30),
               RowItemsWideget(),
               SizedBox(height: 20),
-              AllItemsWidget(),
+              AllItemsWidget(selectedCategory: selectedCategory),
             ],
           ),
         ),
